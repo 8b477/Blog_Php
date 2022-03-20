@@ -52,7 +52,7 @@ else{
     <title><?= $article->title ?></title>
 </head>
 <body>
-    <a href="../index.php">Retour aux articles</a>
+
     <h1><?= $article->title ?></h1>
     <time><?= $article->date_add ?></time>
     <p><?= $article->content ?></p>

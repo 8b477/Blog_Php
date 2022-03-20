@@ -1,18 +1,13 @@
-<?php
+<?php require_once('./include.php'); ?>
 
-use App\config\FunctionManager;
-use App\Manager\ArticleManager;
-
-require_once('./include.php');
-
-$articles = ArticleManager::getAllArticles();
-?>
-
-    <h1>Mes différents articles</h1>
-
-    <?php foreach($articles as $article) {?>
-        <h2><?= $article->title ?></h2>
-        <time><?= $article->date_add ?></time>
-        <p><a href="View/article.php?id=<?= $article->id ?>">Lire la suite</a></p>
-    <?php } ?>
-
+<body class="d-flex h-100 text-center text-white bg-dark">
+    <main class="px-3">
+        <h1>Bienvenue sur ton blog favoris.</h1>
+        <p class="lead">Si celui-ci te plaît n'hésite pas à le partager, à créé un compte et posté des nouveaux articles ou commentaires, en respectant le règlement que tu trouveras sur le lien ci dessous.</p>
+        <p class="lead">
+            <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Règlement général</a>
+        </p>
+    </main>
+</div>
+<?php require_once (__DIR__ . '/parts/footer.php'); ?>
+</body>
