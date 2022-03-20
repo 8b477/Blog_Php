@@ -27,7 +27,7 @@ require_once (__DIR__ . '/../include.php');
 <h1>Connexion</h1>
 <form action="" method="POST">
 
-    <label for="username-id">Votre pseudo</label>
+    <label for="username-id">Votre pseudo <a href="/public/forget.php">(Mot de passe oublié ?)</a></label>
     <p><input type="text" name="username" id="username-id"></p>
 
     <label for="pass-id">Votre Mot de passe</label>

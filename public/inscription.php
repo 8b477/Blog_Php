@@ -73,22 +73,24 @@ session_start();
         </div>
     <?php }
 ?>
-<form action="" method="post">
+    <h1>Inscription</h1>
 
-    <label for="username-id">Entrez un pseudo : </label>
-    <p><input type="text" name="username" id="username-id"></p>
+    <form action="" method="post">
 
-    <label for="mail-id">Entrez votre adresse mail : </label>
-    <p><input type="mail" name="mail" id="mail-id"></p>
+        <label for="username-id">Entrez un pseudo : </label>
+        <p><input type="text" name="username" id="username-id"></p>
 
-    <label for="password-id">Entrez un mot de passe : </label>
-    <p><input type="password" name="password" id="password-id"></p>
+        <label for="mail-id">Entrez votre adresse mail : </label>
+        <p><input type="mail" name="mail" id="mail-id"></p>
 
-    <label for="pass-id-check">Confirmez le mot de passe : </label>
-    <p><input type="password" name="password-check" id="password-id-check"></p>
+        <label for="password-id">Entrez un mot de passe : </label>
+        <p><input type="password" name="password" id="password-id"></p>
 
-    <p><input type="submit" value="inscription"></p>
+        <label for="pass-id-check">Confirmez le mot de passe : </label>
+        <p><input type="password" name="password-check" id="password-id-check"></p>
 
-</form>
+        <p><input type="submit" value="inscription"></p>
+
+    </form>
 
 
