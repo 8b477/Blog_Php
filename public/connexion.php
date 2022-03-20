@@ -12,6 +12,7 @@ require_once (__DIR__ . '/../include.php');
         $user = $req->fetch();
         if (password_verify($_POST['password'], $user->password))
         {
+            session_start();
             $_SESSION['auth'] = $user;
             $_SESSION['flash']['success'] = 'Vous êtes connecté !';
             header('Location: /public/account.php');
