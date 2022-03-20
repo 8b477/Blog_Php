@@ -1,10 +1,11 @@
 <?php
 
 use App\config\FunctionManager;
+use App\Manager\ArticleManager;
 
 require_once('./include.php');
 
-$articles = FunctionManager::getAllArticles();
+$articles = ArticleManager::getAllArticles();
 ?>
 
 <!doctype html>
@@ -23,7 +24,7 @@ $articles = FunctionManager::getAllArticles();
     <?php foreach($articles as $article) {?>
         <h2><?= $article->title ?></h2>
         <time><?= $article->date_add ?></time>
-        <p><a href="public/article.php?id=<?= $article->id ?>">Lire la suite</a></p>
+        <p><a href="View/article.php?id=<?= $article->id ?>">Lire la suite</a></p>
     <?php } ?>
 </body>
 </html>

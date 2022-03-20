@@ -1,8 +1,10 @@
 <?php
 
 use App\config\FunctionManager;
+use App\Manager\ArticleManager;
+use App\Manager\CommentManager;
 
-require_once (__DIR__ . '/../include.php');
+require_once(__DIR__ . '/../include.php');
 
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id']))
@@ -27,7 +29,7 @@ else{
                 array_push($errors, 'Entrez un commentaire');
 
         if (count($errors) == 0){
-            $comment = FunctionManager::addComment($id, $author, $comment);
+            $comment = CommentManager::addComment($id, $author, $comment);
 
             $success = 'Votre commentaire a été publié !';
 
@@ -35,8 +37,8 @@ else{
             unset($comment);
         }
     }
-    $article = FunctionManager::getArticle($id);
-    $comments = FunctionManager::getComments($id);
+    $article = ArticleManager::getArticle($id);
+    $comments = CommentManager::getComments($id);
 }
 ?>
 
