@@ -1,7 +1,10 @@
 <?php
-require __DIR__ . '/config/function.php';
 
-$articles = getAllArticles();
+use App\config\FunctionManager;
+
+require_once('./include.php');
+
+$articles = FunctionManager::getAllArticles();
 ?>
 
 <!doctype html>
@@ -20,13 +23,7 @@ $articles = getAllArticles();
     <?php foreach($articles as $article) {?>
         <h2><?= $article->title ?></h2>
         <time><?= $article->date_add ?></time>
-        <p><a href="article.php?id=<?= $article->id ?>">Lire la suite</a></p>
+        <p><a href="public/article.php?id=<?= $article->id ?>">Lire la suite</a></p>
     <?php } ?>
 </body>
 </html>
-
-<?php
-
-
-
-?>

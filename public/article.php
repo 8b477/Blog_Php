@@ -1,5 +1,10 @@
 <?php
 
+use App\config\FunctionManager;
+
+require_once (__DIR__ . '/../include.php');
+
+
 if (!isset($_GET['id']) || !is_numeric($_GET['id']))
     header('Location: index.php');
 
@@ -7,7 +12,6 @@ else{
     extract($_GET);
     $id = strip_tags($id);
 
-    require_once ('config/function.php');
 
     if (!empty($_POST)){
         extract($_POST);
@@ -23,7 +27,7 @@ else{
                 array_push($errors, 'Entrez un commentaire');
 
         if (count($errors) == 0){
-            $comment = addComment($id, $author, $comment);
+            $comment = FunctionManager::addComment($id, $author, $comment);
 
             $success = 'Votre commentaire a été publié !';
 
@@ -31,8 +35,8 @@ else{
             unset($comment);
         }
     }
-    $article = getArticle($id);
-    $comments = getComments($id);
+    $article = FunctionManager::getArticle($id);
+    $comments = FunctionManager::getComments($id);
 }
 ?>
 
@@ -46,7 +50,7 @@ else{
     <title><?= $article->title ?></title>
 </head>
 <body>
-    <a href="index.php">Retour aux articles</a>
+    <a href="../index.php">Retour aux articles</a>
     <h1><?= $article->title ?></h1>
     <time><?= $article->date_add ?></time>
     <p><?= $article->content ?></p>
