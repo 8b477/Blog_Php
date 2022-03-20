@@ -4,7 +4,7 @@ use App\config\Connect;
 use App\config\FunctionManager;
 
 require_once (__DIR__ . '/../include.php');
-
+session_start();
     if (!empty($_POST))
     {
 
@@ -50,11 +50,12 @@ require_once (__DIR__ . '/../include.php');
             $user_id = $pdo->lastInsertId();
             mail($_POST['mail'], 'Confirmation de votre compte', "Afin de valider votre compte merci de cliquer sur ce lien\n\nhttp://localhost:8000/public/confirm.php?id=$user_id&token=$token");
 
+            $_SESSION['flash']['success'] = "un email de confirmation vous a été envoyé pour valider votre compte";
+
             //CHECK LE LIEN BRO
             header('Location: /public/connexion.php');
             exit();
         }
-        die("Votre compte à bien été créé !");
     }
 
 ?>

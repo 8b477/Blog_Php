@@ -1,3 +1,9 @@
+<?php
+if (session_status() == PHP_SESSION_NONE)
+{
+    session_start();
+}
+?>
 <!doctype html>
 <html lang="fr">
 <head>
@@ -17,13 +23,27 @@
             <nav class="nav nav-masthead justify-content-center float-md-end">
                 <a class="nav-link active" aria-current="page" href="/index.php">Home</a>
                 <a class="nav-link" href="/public/articles.php">Articles</a>
+                <?php
+                        if (isset($_SESSION['auth']))
+                            {
+                              ?>  <a class="nav-link" href="/public/deconnexion.php">Deconnexion</a> <?php
+                            }
+                else{ ?>
                 <a class="nav-link" href="/public/connexion.php">Connexion</a>
                 <a class="nav-link" href="/public/inscription.php">Inscription</a>
+                <?php } ?>
             </nav>
         </div>
     </header>
-
-
 <?php
-
+    if (isset($_SESSION['flash']))
+    {
+        foreach ($_SESSION['flash'] as $type => $message)
+        {?>
+            <div class="alert alert-<?= $type; ?>">
+            <?= $message; ?>
+            </div>
+        <?php }
+        unset($_SESSION['flash']);
+    }
 ?>
