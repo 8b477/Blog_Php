@@ -4,6 +4,7 @@ use App\config\Connect;
 
 require_once (__DIR__ . '/../include.php');
 
+    //Simple verification for a connection.
     if (!empty($_POST) && !empty($_POST['username'] && !empty($_POST['password'])))
     {
         $pdo = Connect::getPDO();
@@ -12,6 +13,7 @@ require_once (__DIR__ . '/../include.php');
         $user = $req->fetch();
         if (password_verify($_POST['password'], $user->password))
         {
+            //Start user SESSION for stock some data
             session_start();
             $_SESSION['auth'] = $user;
             $_SESSION['flash']['success'] = 'Vous êtes connecté !';
@@ -27,6 +29,7 @@ require_once (__DIR__ . '/../include.php');
 <h1>Connexion</h1>
 <form action="" method="POST">
 
+    <!-- Simple form for connection -->
     <label for="username-id">Votre pseudo <a href="/public/forget.php">(Mot de passe oublié ?)</a></label>
     <p><input type="text" name="username" id="username-id"></p>
 

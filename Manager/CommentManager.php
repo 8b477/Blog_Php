@@ -5,19 +5,32 @@ namespace App\Manager;
 use App\config\Connect;
 use PDO;
 
+/**
+ * Class manage comment from database
+ */
+
 class CommentManager
 {
 
 
-//On ajoute un commentaire a un article déjà existant
+    /**
+     * Add a comment to an existing article
+     * @param $articleId
+     * @param $author
+     * @param $comment
+     */
     public static function addComment($articleId, $author, $comment){
         $req = Connect::getPDO()->prepare('INSERT INTO comment (articleId, author, comment, date) VALUES (?, ?, ?, NOW())');
         $req->execute(array($articleId, $author, $comment));
         $req->closeCursor();
     }
 
-//recupère les commentaires a part rapport a l'id de l'article en question
 
+    /**
+     * Return comments linked to an article id
+     * @param $id
+     * @return array|false
+     */
     public static function getComments($id){
         $req = Connect::getPDO()->prepare('SELECT * FROM comment WHERE articleId = ?');
         $req->execute(array($id));

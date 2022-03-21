@@ -5,9 +5,15 @@ namespace App\Manager;
 use App\config\Connect;
 use PDO;
 
+/**
+ * Class for manage table article from DB
+ */
 class ArticleManager
 {
-
+    /**
+     * Return all articles
+     * @return array|false
+     */
     public static function getAllArticles()
     {
         $req = Connect::getPDO()->prepare('SELECT id, title, date_add FROM articles ORDER BY id DESC');
@@ -18,7 +24,11 @@ class ArticleManager
     }
 
 
-//fonction qui récupère un article
+    /**
+     * Return One article
+     * @param $id
+     * @return mixed|void
+     */
     public static function getArticle($id){
         $req = Connect::getPDO()->prepare('SELECT * FROM articles WHERE id = ?');
         $req->execute(array($id));

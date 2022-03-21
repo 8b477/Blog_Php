@@ -6,16 +6,18 @@ use App\Manager\CommentManager;
 
 require_once(__DIR__ . '/../include.php');
 
-
+//Check if GET not exist and if is not numeric.
 if (!isset($_GET['id']) || !is_numeric($_GET['id']))
     header('Location: index.php');
 
 else{
+    //Recover value of GET.
     extract($_GET);
     $id = strip_tags($id);
 
 
     if (!empty($_POST)){
+        //If POST is not empty recover value.
         extract($_POST);
         $errors = array();
 
@@ -23,20 +25,25 @@ else{
         $comment = strip_tags($comment);
 
         if (empty($author))
+            //Display error message if author is not complete.
             array_push($errors, 'Entrez un pseudo');
 
         if (empty($comment))
+                 //Display error message if comment is not complete.
                 array_push($errors, 'Entrez un commentaire');
 
         if (count($errors) == 0){
+            //If no errors, the comment is add.
             $comment = CommentManager::addComment($id, $author, $comment);
 
             $success = 'Votre commentaire a été publié !';
 
+            //Empty author and comment.
             unset($author);
             unset($comment);
         }
     }
+    //show the article and its comments.
     $article = ArticleManager::getArticle($id);
     $comments = CommentManager::getComments($id);
 }
@@ -49,15 +56,19 @@ else{
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Display name of article -->
     <title><?= $article->title ?></title>
 </head>
 <body>
 
+<!-- Display some informations of article -->
     <h1><?= $article->title ?></h1>
     <time><?= $article->date_add ?></time>
     <p><?= $article->content ?></p>
 
     <?php
+    //Display message or success errors.
         if (isset($success)){
             echo $success;
         }
@@ -68,6 +79,7 @@ else{
         }
     ?>
 
+    <!-- Simple form to write a comment -->
     <form action="" method="POST">
 
         <label for="author">Pseudo :</label>
@@ -83,6 +95,7 @@ else{
 
     <h2>Commentaires</h2>
 
+        <!-- Show all comment for article -->
     <?php
     foreach ($comments as $comment){
         ?><p><?= $comment->author ?></p>

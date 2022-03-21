@@ -5,8 +5,13 @@ namespace App\config;
 use PDO;
 use PDOException;
 
+
 class Connect
 {
+    /**
+     * Connect to DB
+     * @return PDO|null
+     */
     public static function getPDO() :? PDO
     {
         try {
