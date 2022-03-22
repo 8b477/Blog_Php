@@ -1,9 +1,9 @@
 <?php
                                 //Page for inscription new user !
-use App\config\Connect;
-use App\config\FunctionManager;
+use App\Config\Connect;
+use App\Config\FunctionManager;
 
-require_once (__DIR__ . '/../include.php');
+require_once(__DIR__ . '/../include.php');
 //session_start();
     if (!empty($_POST))
     {
@@ -59,12 +59,14 @@ require_once (__DIR__ . '/../include.php');
             $user_id = $pdo->lastInsertId();
 
             //Send mail with link for validate inscription.
-            mail($_POST['mail'], 'Confirmation de votre compte', "Afin de valider votre compte merci de cliquer sur ce lien\n\nhttp://localhost:8000/public/confirm.php?id=$user_id&token=$token");
+
+            //FIXE ME **************************************************************************************************
+            mail($_POST['mail'], 'Confirmation de votre compte', "Afin de valider votre compte merci de cliquer sur ce lien\n\nhttp://localhost:8000/public/account/confirm.php?id=$user_id&token=$token");
 
             $_SESSION['flash']['success'] = "un email de confirmation vous a été envoyé pour valider votre compte";
 
             //CHECK LE LIEN BRO
-            header('Location: /public/connexion.php');
+            header('Location: /View/connexion.php');
             exit();
         }
     }

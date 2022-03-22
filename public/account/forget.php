@@ -1,9 +1,9 @@
 <?php
                                  //This page is for recover password !
-use App\config\Connect;
-use App\config\FunctionManager;
+use App\Config\Connect;
+use App\Config\FunctionManager;
 
-require_once (__DIR__ . '/../include.php');
+require_once(__DIR__ . '/../../include.php');
 
     //Check if POST is not empty.
     if (!empty($_POST) && !empty($_POST['mail']))
@@ -25,8 +25,8 @@ require_once (__DIR__ . '/../include.php');
             $_SESSION['flash']['success'] = 'Les instructions du rappel du mot de passe vous ont été envoyées par e-mail !';
 
             //Send an email with the user ID as a parameter and the generated token.
-            mail($_POST['mail'], 'Réinitialisation du mot de passe', "Afin de récupéré votre mot de passe merci de cliquer sur ce lien\n\nhttp://localhost:8000/public/reset.php?id={$user->id}&token=$reset_token");
-            header('Location: /public/connexion.php');
+            mail($_POST['mail'], 'Réinitialisation du mot de passe', "Afin de récupéré votre mot de passe merci de cliquer sur ce lien\n\nhttp://localhost:8000/public/account/reset.php?id={$user->id}&token=$reset_token");
+            header('Location: /../View/connexion.php');
             exit();
         }
         else{

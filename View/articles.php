@@ -1,6 +1,6 @@
 <?php use App\Manager\ArticleManager;
 
-require_once (__DIR__ . '/../include.php');
+require_once(__DIR__ . '/../include.php');
 
 //Call function getAllArticles for display All articles => in variable
 $articles = ArticleManager::getAllArticles();
@@ -13,5 +13,5 @@ $articles = ArticleManager::getAllArticles();
         <time><?= $article->date_add ?></time>
 
     <!-- Display a link for more details on article id -->
-        <p><a href="/../View/article.php?id=<?= $article->id ?>">Lire la suite</a></p>
+        <p><a href="/View/article.php?id=<?= $article->id ?>">Lire la suite</a></p>
     <?php } ?>

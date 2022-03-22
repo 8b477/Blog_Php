@@ -2,7 +2,7 @@
 
 namespace App\Manager;
 
-use App\config\Connect;
+use App\Config\Connect;
 use PDO;
 
 /**

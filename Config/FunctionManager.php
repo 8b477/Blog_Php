@@ -1,6 +1,6 @@
 <?php
 
-namespace App\config;
+namespace App\Config;
 
 /**
  * Some function utils
@@ -38,7 +38,7 @@ class FunctionManager
         if (!isset($_SESSION['auth']))
         {
             $_SESSION['flash']['danger'] = "Vous n'avez pas le droit d'accéder à cette page";
-            header('Location: public/connexion.php');
+            header('Location: /public/account/connexion.php');
         }
     }
 }

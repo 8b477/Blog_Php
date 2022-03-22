@@ -25,17 +25,17 @@ if (session_status() == PHP_SESSION_NONE)
             <h3 class="float-md-start mb-0">Mon blog</h3>
             <nav class="nav nav-masthead justify-content-center float-md-end">
                 <a class="nav-link active" aria-current="page" href="/index.php">Home</a>
-                <a class="nav-link" href="/public/articles.php">Articles</a>
+                <a class="nav-link" href="/../../View/articles.php">Articles</a>
 
                 <!-- Displays the list adapted if the user is logged in or not  -->
                 <?php
                         if (isset($_SESSION['auth']))
                             {
-                              ?>  <a class="nav-link" href="/public/deconnexion.php">Deconnexion</a> <?php
+                              ?>  <a class="nav-link" href="../../View/deconnexion.php">Deconnexion</a> <?php
                             }
                 else{ ?>
-                <a class="nav-link" href="/public/connexion.php">Connexion</a>
-                <a class="nav-link" href="/public/inscription.php">Inscription</a>
+                <a class="nav-link" href="/View/connexion.php">Connexion</a>
+                <a class="nav-link" href="/View/inscription.php">Inscription</a>
                 <?php } ?>
 
             </nav>

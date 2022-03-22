@@ -1,6 +1,6 @@
 <?php
 
-use App\config\FunctionManager;
+
 use App\Manager\ArticleManager;
 use App\Manager\CommentManager;
 
@@ -15,7 +15,7 @@ else{
     extract($_GET);
     $id = strip_tags($id);
 
-
+    //Check data before add comment
     if (!empty($_POST)){
         //If POST is not empty recover value.
         extract($_POST);

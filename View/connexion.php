@@ -1,8 +1,8 @@
 <?php
 
-use App\config\Connect;
+use App\Config\Connect;
 
-require_once (__DIR__ . '/../include.php');
+require_once(__DIR__ . '/../include.php');
 
     //Simple verification for a connection.
     if (!empty($_POST) && !empty($_POST['username'] && !empty($_POST['password'])))
@@ -17,7 +17,7 @@ require_once (__DIR__ . '/../include.php');
             session_start();
             $_SESSION['auth'] = $user;
             $_SESSION['flash']['success'] = 'Vous êtes connecté !';
-            header('Location: /public/account.php');
+            header('Location: /public/account/account.php');
             exit();
         }
         else{
@@ -30,7 +30,7 @@ require_once (__DIR__ . '/../include.php');
 <form action="" method="POST">
 
     <!-- Simple form for connection -->
-    <label for="username-id">Votre pseudo <a href="/public/forget.php">(Mot de passe oublié ?)</a></label>
+    <label for="username-id">Votre pseudo <a href="../public/account/forget.php">(Mot de passe oublié ?)</a></label>
     <p><input type="text" name="username" id="username-id"></p>
 
     <label for="pass-id">Votre Mot de passe</label>

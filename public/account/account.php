@@ -1,9 +1,9 @@
 <?php
 
-use App\config\Connect;
+use App\Config\Connect;
 
-require_once (__DIR__ . '/../include.php');
-require_once (__DIR__ . '/../Config/FunctionManager.php');
+require_once(__DIR__ . '/../../include.php');
+require_once(__DIR__ . '/../../Config/FunctionManager.php');
 
 \App\config\FunctionManager::logged();
 

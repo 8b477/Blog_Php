@@ -1,8 +1,8 @@
 <?php
 
-use App\config\Connect;
+use App\Config\Connect;
 
-require_once (__DIR__ . '/../include.php');
+require_once(__DIR__ . '/../../include.php');
 
 //Here i check url with superglobal GET.
 $user_id= $_GET['id'];
@@ -22,8 +22,8 @@ if ($user && $user->confirmation_token == $token){
     $req->execute([$user_id]);
     $_SESSION['flash']['success'] = 'votre compte à bien été validé !';
     $_SESSION['auth'] = $user;
-    header('Location: /public/account.php');
+    header('Location: /public/account/account.php');
 }else{
     $_SESSION['flash']['danger'] = "Ce token n'est plus valide";
-    header('Location: public/inscription.php');
+    header('Location: /View/inscription.php');
 }

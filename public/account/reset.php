@@ -1,10 +1,10 @@
 <?php
                             //PAGE FOR RESET PASSWORD !
 
-use App\config\Connect;
+use App\Config\Connect;
 
-require_once (__DIR__ . '/../include.php');
-require_once (__DIR__ . '/../Config/FunctionManager.php');
+require_once(__DIR__ . '/../../include.php');
+require_once(__DIR__ . '/../../Config/FunctionManager.php');
 
     //Check if id and token is are my url.
     if (isset($_GET['id']) && isset($_GET['token']))
@@ -26,19 +26,19 @@ require_once (__DIR__ . '/../Config/FunctionManager.php');
                     $pdo->prepare('UPDATE users SET password = ?')->execute();
                     session_start();
                     $_SESSION['flash']['success'] = "Votre mot de passe à bien été modifié !";
-                    header('Location: /public/account.php');
+                    header('Location: /../../View/connexion.php');
                     exit();
                 }
             }
         }else{
             session_start();
             $_SESSION['flash']['error'] = "Ce token n'est pas valide";
-            header('Location: /public/connexion.php');
+            header('Location: /../View/connexion.php');
             exit();
         }
     }
     else{
-        header('Location: /public/connexion.php');
+        header('Location: /../View/connexion.php');
         exit();
     }
 
