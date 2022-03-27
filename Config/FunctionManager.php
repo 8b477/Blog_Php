@@ -2,6 +2,9 @@
 
 namespace App\Config;
 
+use App\Config\Connect;
+
+
 /**
  * Some function utils
  */
@@ -39,6 +42,40 @@ class FunctionManager
         {
             $_SESSION['flash']['danger'] = "Vous n'avez pas le droit d'accéder à cette page";
             header('Location: /public/account/connexion.php');
+        }
+    }
+
+    /**
+     * Reconnection auto with COOKIE
+     */
+    public static function autoLog(){
+
+        //test cookie if good reco auto
+        if (isset($_COOKIE['remember']) && !isset($_SESSION['auth']))
+        {
+            require_once (__DIR__ . '/Connect.php');
+
+            $remember_token = $_COOKIE['remember'];
+            $part = explode('==', $remember_token);
+            $user_id = $part[0];
+            $req = Connect::getPDO()->prepare('SELECT * FROM users WHERE id = ?');
+            $req->execute([$user_id]);
+            $user = $req->fetch();
+
+            if ($user)
+            {
+                $expected = $user_id . '==' . $user->remember_token . sha1($user_id . '8b477');
+
+                if ($expected == $remember_token)
+                {
+                    session_start();
+                    $_SESSION['auth'] = $user;
+                    setcookie('remember', $remember_token, time() + 60 * 60 * 24 * 7);
+                }
+
+            }else{
+                setcookie('remember', NULL, -1);
+            }
         }
     }
 }

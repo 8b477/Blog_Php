@@ -3,6 +3,6 @@ body{
     color: white;
 }
 
-input{
+input, textarea{
     color: blue;
 }

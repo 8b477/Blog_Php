@@ -11,7 +11,7 @@ require_once(__DIR__ . '/../../Config/FunctionManager.php');
     {
         //If true check validity with my DB.
         $pdo = Connect::getPDO();
-        $req = $pdo->prepare('SELECT * FROM users WHERE id = ? AND reset_token = ? AND confirmed_at > DATE_SUB(NOW(), INTERVAL 30 MINUTE)');
+        $req = $pdo->prepare('SELECT * FROM users WHERE id = ? AND reset_token IS NOT NULL AND reset_token = ? AND confirmed_at > DATE_SUB(NOW(), INTERVAL 30 MINUTE)');
         $req->execute([$_GET['id'], $_GET['token']]);
         $user = $req->fetch();
 
@@ -23,7 +23,9 @@ require_once(__DIR__ . '/../../Config/FunctionManager.php');
                 if (!empty($_POST['password']) && $_POST['password'] == $_POST['password_confirm'])
                 {
                     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-                    $pdo->prepare('UPDATE users SET password = ?')->execute();
+
+                    //init reset_at and reset_token in DB
+                    $pdo->prepare('UPDATE users SET password = ?, reset_at = NULL, reset_token = NULL')->execute([$password]);
                     session_start();
                     $_SESSION['flash']['success'] = "Votre mot de passe à bien été modifié !";
                     header('Location: /../../View/connexion.php');
@@ -45,14 +47,22 @@ require_once(__DIR__ . '/../../Config/FunctionManager.php');
 ?>
 
 <!-- Simple form for forgot password. -->
-<h1>Reset mot de passe</h1>
-<form action="" method="POST">
+    <h1>Reset mot de passe</h1>
 
-    <label for="username-id">Votre mot de passe</label>
-    <p><input type="password" name="password" id="password-id"></p>
+    <form action="" method="POST">
 
-    <label for="pass-id">Confirmation du pass</label>
-    <p><input type="password" name="password_confirm" id="pass_id_confirm"></p>
+        <label for="username-id">Votre mot de passe</label>
+        <p>
+            <input type="password" name="password" id="password-id">
+        </p>
 
-    <p><input type="submit" value="Validé !"></p>
-</form>
+        <label for="pass-id">Confirmation du pass</label>
+        <p>
+            <input type="password" name="password_confirm" id="pass_id_confirm">
+        </p>
+
+        <p>
+            <input type="submit" value="Validé !">
+        </p>
+
+    </form>

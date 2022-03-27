@@ -21,7 +21,7 @@ require_once(__DIR__ . '/../include.php');
             if ($user)
             //If true return message error !
             {
-                $errors['username'] = "ce speudo est déjà utilisé !";
+                $errors['username'] = "ce pseudo est déjà utilisé !";
             }
         }
         //Check mail with filter_var
@@ -48,12 +48,13 @@ require_once(__DIR__ . '/../include.php');
         if (empty($errors))
         {
             $pdo = Connect::getPDO();
-            $req = $pdo->prepare("INSERT INTO users SET username = ?, password = ?, mail = ?, confirmation_token = ?");
+            $req = $pdo->prepare("INSERT INTO users SET username = ?, password = ?, mail = ?, confirmation_token = ?, role_user = ? ");
             $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
             //Create a token to validate later by email.
             $token = FunctionManager::str_random(60);
-            $req->execute([$_POST['username'], $password, $_POST['mail'], $token]);
+            $role_user = 'user';
+            $req->execute([$_POST['username'], $password, $_POST['mail'], $token, $role_user]);
 
             //Recover the last id for identified the new user.
             $user_id = $pdo->lastInsertId();
@@ -97,7 +98,7 @@ require_once(__DIR__ . '/../include.php');
         <p><input type="text" name="username" id="username-id"></p>
 
         <label for="mail-id">Entrez votre adresse mail : </label>
-        <p><input type="mail" name="mail" id="mail-id"></p>
+        <p><input type="email" name="mail" id="mail-id"></p>
 
         <label for="password-id">Entrez un mot de passe : </label>
         <p><input type="password" name="password" id="password-id"></p>

@@ -1,11 +1,12 @@
 <?php
 
 use App\Config\Connect;
+use App\config\FunctionManager;
 
 require_once(__DIR__ . '/../../include.php');
 require_once(__DIR__ . '/../../Config/FunctionManager.php');
 
-\App\config\FunctionManager::logged();
+FunctionManager::logged();
 
     if (!empty($_POST))
     {       //Check if password is correct if not display a error message.
@@ -25,9 +26,11 @@ require_once(__DIR__ . '/../../Config/FunctionManager.php');
     }
 ?>
         <!-- Display perso title -->
-<h1>Bienvenue <?= $_SESSION['auth']->username ?>!</h1>
+<h1>Bienvenue sur ton compte <?= $_SESSION['auth']->username ?> !</h1>
 
         <!-- Form for change pass -->
+<h2>Nouveaux mot de passe</h2>
+
     <form action="" method="post">
         <div class="form-group">
             <input type="password" name="password" id="password-id" placeholder="Nouveau mot de passe">

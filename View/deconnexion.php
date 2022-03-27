@@ -3,6 +3,8 @@
 //Logout page with message of confirmation.
 session_start();
 
+setcookie('remember', NULL, -1);
+
 //Clean SESSION
 unset($_SESSION['auth']);
 

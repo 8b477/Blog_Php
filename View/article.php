@@ -8,45 +8,20 @@ require_once(__DIR__ . '/../include.php');
 
 //Check if GET not exist and if is not numeric.
 if (!isset($_GET['id']) || !is_numeric($_GET['id']))
-    header('Location: index.php');
+    {
+            header('Location: /admin/admin.php');
+    }
 
 else{
     //Recover value of GET.
-    extract($_GET);
-    $id = strip_tags($id);
-
-    //Check data before add comment
-    if (!empty($_POST)){
-        //If POST is not empty recover value.
-        extract($_POST);
-        $errors = array();
-
-        $author = strip_tags($author);
-        $comment = strip_tags($comment);
-
-        if (empty($author))
-            //Display error message if author is not complete.
-            array_push($errors, 'Entrez un pseudo');
-
-        if (empty($comment))
-                 //Display error message if comment is not complete.
-                array_push($errors, 'Entrez un commentaire');
-
-        if (count($errors) == 0){
-            //If no errors, the comment is add.
-            $comment = CommentManager::addComment($id, $author, $comment);
-
-            $success = 'Votre commentaire a été publié !';
-
-            //Empty author and comment.
-            unset($author);
-            unset($comment);
-        }
+    extract((array)$_GET['id']);
+    $id = strip_tags($_GET['id']);
     }
-    //show the article and its comments.
-    $article = ArticleManager::getArticle($id);
-    $comments = CommentManager::getComments($id);
-}
+
+//show the article and its comments.
+$article = ArticleManager::getArticle($id);
+$comments = CommentManager::getComments($id);
+
 ?>
 
 <!doctype html>
@@ -79,12 +54,14 @@ else{
         }
     ?>
 
+
     <!-- Simple form to write a comment -->
     <form action="" method="POST">
 
         <label for="author">Pseudo :</label>
         <br>
-        <p><input type="text" name="author" id="author-id" value="<?php if (isset($author)) echo $author ?>"></p>
+                                    <!--  If user have account, username is write  -->
+        <p><input type="text" name="author" id="author-id" value="<?php if(!empty($_SESSION['auth'])){echo $_SESSION['auth']->username;}else{echo '';} ?>"></p>
 
         <label for="comment">Commentaire :</label>
         <br>

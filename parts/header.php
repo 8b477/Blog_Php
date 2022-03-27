@@ -1,4 +1,10 @@
 <?php
+require_once (__DIR__ . '/../Config/FunctionManager.php');
+
+use App\Config\FunctionManager;
+
+FunctionManager::autoLog();
+
 if (session_status() == PHP_SESSION_NONE)
 {
     session_start();
@@ -25,7 +31,13 @@ if (session_status() == PHP_SESSION_NONE)
             <h3 class="float-md-start mb-0">Mon blog</h3>
             <nav class="nav nav-masthead justify-content-center float-md-end">
                 <a class="nav-link active" aria-current="page" href="/index.php">Home</a>
-                <a class="nav-link" href="/../../View/articles.php">Articles</a>
+               <?php if ($_SESSION['role'] == 'admin')
+                   { ?>
+                       <a class="nav-link" href="/../../public/admin/admin.php">Articles</a>
+                  <?php } else{ ?>
+                   <a class="nav-link" href="/../../View/articles.php">Articles</a>
+                   <?php } ?>
+
 
                 <!-- Displays the list adapted if the user is logged in or not  -->
                 <?php
@@ -36,6 +48,7 @@ if (session_status() == PHP_SESSION_NONE)
                 else{ ?>
                 <a class="nav-link" href="/View/connexion.php">Connexion</a>
                 <a class="nav-link" href="/View/inscription.php">Inscription</a>
+                <a class="nav-link" href="/View/admin.php">Admin</a>
                 <?php } ?>
 
             </nav>
