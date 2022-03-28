@@ -22,6 +22,13 @@ else{
 $article = ArticleManager::getArticle($id);
 $comments = CommentManager::getComments($id);
 
+//secure data from form
+
+if(!empty($_POST['author']) && !empty($_POST['comment']))
+{
+    $_POST['author'] = trim(addslashes(strip_tags($_POST['author'])));
+    $_POST['comment'] = trim(addslashes(strip_tags($_POST['comment'])));
+}
 ?>
 
 <!doctype html>
