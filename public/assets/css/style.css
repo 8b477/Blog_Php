@@ -1,8 +1,143 @@
 body{
+    font-family: 'Concert One', cursive, sans-serif;
     background-color: black;
-    color: white;
+    color: #cae6fc;
 }
 
 input, textarea{
     color: blue;
+    font-size: 1.8rem;
+}
+input{
+    margin: 1rem;
+}
+textarea{
+    padding: 1rem;
+    border-radius: 5px;
+}
+label{
+    font-size: 2rem;
+}
+
+a{
+    font-size: 1.7rem;
+}
+
+header{
+    text-align: center;
+}
+
+.footer{
+    position: absolute;
+    bottom: 0;
+    font-size: 1.5rem;
+    text-align: center;
+    width: 100%;
+    color: #c7254e;
+}
+
+img{
+    height: 2rem;
+}
+
+img:hover{
+    transform: scale(1.5);
+}
+
+main{
+    padding-top: 10rem;
+}
+
+h1, h2, h3{
+    text-align: center;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: baseline;
+    flex-wrap: wrap;
+    width: 20rem;
+    margin: auto;
+    padding: 1rem;
+}
+
+.wrapper-article{
+    width: 60%;
+    margin: 0 auto;
+    padding: 1.2rem;
+    border: solid 4px #cae6fc;
+    border-radius: 10px;
+}
+
+.underline{
+    text-decoration-line: underline;
+}
+
+.time{
+    font-style: italic;
+    color: #c1e2b3;
+    font-size: 1.8rem;
+}
+
+.content{
+    font-size: 2rem;
+    font-weight: bold;
+    color: rgba(245, 255, 250, 0.68);
+}
+
+.author{
+    font-weight: bolder;
+    color: #cae6fc;
+    font-size: 2rem;
+    margin: 0;
+}
+
+.comment{
+    font-size: 1.9rem;
+    margin: 0;
+    font-style: italic;
+    color: bisque;
+}
+
+
+.comment-admin{
+    width: 98%;
+}
+
+.form-connexion{
+    margin: 0 auto;
+    width: 25%;
+    border: solid 2px forestgreen;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    background-color: darkslategrey;
+}
+
+.input-area-admin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.name-article{
+    color: #c1e2b3;
+}
+
+.dotted{
+    border-bottom: 1px dashed #999;
+    text-decoration: none;
+}
+
+.background{
+    border: #cae6fc solid 2px;
 }

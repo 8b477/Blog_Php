@@ -29,15 +29,14 @@ FunctionManager::logged();
 <h1>Bienvenue sur ton compte <?= $_SESSION['auth']->username ?> !</h1>
 
         <!-- Form for change pass -->
-<h2>Nouveaux mot de passe</h2>
+<h2>Besoin de changé de mot de passe ?</h2>
 
-    <form action="" method="post">
-        <div class="form-group">
+    <form class="form-connexion"  action="" method="post">
+
             <input type="password" name="password" id="password-id" placeholder="Nouveau mot de passe">
-        </div>
-        <div class="form-groupe">
+
             <input type="password" name="password-confirm" id="password-confirm-id" placeholder="Confirmation du pass">
-        </div>
+
         <button class="btn-primary">Changer mon mot de passe</button>
     </form>
 

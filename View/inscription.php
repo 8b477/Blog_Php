@@ -4,7 +4,7 @@ use App\Config\Connect;
 use App\Config\FunctionManager;
 
 require_once(__DIR__ . '/../include.php');
-//session_start();
+
     if (!empty($_POST))
     {
         $errors = array();
@@ -92,7 +92,7 @@ require_once(__DIR__ . '/../include.php');
         <!-- Simple form for inscription a new user -->
     <h1>Inscription</h1>
 
-    <form action="" method="post">
+    <form class="form-connexion"  action="" method="post">
 
         <label for="username-id">Entrez un pseudo : </label>
         <p><input type="text" name="username" id="username-id"></p>

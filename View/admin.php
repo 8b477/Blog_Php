@@ -43,10 +43,11 @@ if (!empty($_POST) && !empty($_POST['username'] && !empty($_POST['password'])))
         $_SESSION['flash']['danger'] = 'Identifiant ou mot de passe incorecte';
     }
 }
+
 ?>
 
 <h1>Admin connexion</h1>
-<form action="" method="POST">
+<form class="form-connexion"  action="" method="POST">
 
     <!-- Simple form for connection -->
     <label for="username-id">Votre pseudo <a href="../public/account/forget.php">(Mot de passe oublié ?)</a></label>

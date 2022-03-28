@@ -7,11 +7,13 @@ $articles = ArticleManager::getAllArticles();
 ?>
     <h1>Mes différents articles</h1>
 
+<div class="wrapper">
     <!-- Loop on all articles and displays them  -->
     <?php foreach($articles as $article) {?>
-        <h2><?= $article->title ?></h2>
-        <time><?= $article->date_add ?></time>
+            <h2><?= $article->title ?></h2>
+            <time><?= $article->date_add ?></time>
+            <!-- Display a link for more details on article id -->
+            <p><a href="/View/article.php?id=<?= $article->id ?>">Lire la suite</a></p>
+        <?php } ?>
+</div>
 
-    <!-- Display a link for more details on article id -->
-        <p><a href="/View/article.php?id=<?= $article->id ?>">Lire la suite</a></p>
-    <?php } ?>

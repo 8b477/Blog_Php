@@ -50,10 +50,10 @@ if (isset($_SESSION['auth'])){
 
 ?>
     <h1>Connexion</h1>
-    <form action="" method="POST">
+    <form class="form-connexion" action="" method="POST">
 
         <!-- Simple form for connection -->
-        <label for="username-id">Votre pseudo <a href="../public/account/forget.php">(Mot de passe oublié ?)</a></label>
+        <label for="username-id" class="form-label">Votre pseudo <a href="../public/account/forget.php">(Mot de passe oublié ?)</a></label>
         <p><input type="text" name="username" id="username-id"></p>
 
         <label for="pass-id">Votre Mot de passe</label>

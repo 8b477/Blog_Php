@@ -52,41 +52,49 @@ if ($_SESSION['role'] != 'admin')
     </head>
 <body>
 
-    <!-- Display some informations of article -->
-    <h1>Nom de l'article : <?= $article->title ?></h1>
-    <h3>Date de publication : </h3>
-    <time><?= $article->date_add ?></time>
-    <h3>Contenu de l'article : </h3>
-    <p><?= $article->content ?></p>
-    <!-- Action form for article-->
-    <form action="" method="POST">
-        <p>
-            <textarea name="article_m" id="article_m_id" cols="100" rows="10"><?= $article->content ?></textarea>
-        </p>
-        <input type="submit" value="Modifié/article" name="modA">
-        <input type="submit" value="Supprimé/article" name="supA">
-    </form>
+    <div class="wrapper-article">
+        <!-- Display some informations of article -->
+        <h1 class="dotted">Nom de l'article :
+            <span class="name-article"><?= $article->title ?></span>
+        </h1>
 
+        <h3 class="dotted">Date de publication : <time class="time"><?= $article->date_add ?></time></h3>
 
-    <h3>Commentaire(s)</h3>
-    <?php
-    foreach ($comments as $comment){
-        ?><p>Utilisateur : <?= $comment->author ?></p>
-        <time>Date de publication : <?= $comment->date ?></time>
-        <p>Commentaire(s) : <?= $comment->comment ?></p>
-
-        <!-- Action form for comment -->
+        <h3>Contenu de l'article : </h3>
+        <p><?= $article->content ?></p>
+        <!-- Action form for article-->
         <form action="" method="POST">
-            <p>
-                <input type="text" name="comm" id="comm-id" value="<?= $comment->comment ?>">
-            </p>
-            <input type="submit" value="Modifié/commentaire" name="modC">
-            <input type="submit" value="Supprimé/commentaire" name="modS">
-        </form>
-        <?php
+            <div class="input-area-admin">
+                <p>
+                    <textarea name="article_m" id="article_m_id" cols="100" rows="10"><?= $article->content ?></textarea>
+                </p>
+                <input type="submit" value="Modifié/article" name="modA">
+                <input type="submit" value="Supprimé/article" name="supA">
+            </div>
 
-    }
-    ?>
+        </form>
+
+
+        <h3 class="background">Commentaire(s)</h3>
+        <?php
+        foreach ($comments as $comment){
+            ?><p class="author">Utilisateur : <?= $comment->author ?></p>
+            <time class="time">Date de publication : <?= $comment->date ?></time>
+            <p class="comment">Commentaire(s) : <?= $comment->comment ?></p>
+
+            <!-- Action form for comment -->
+            <form action="" method="POST">
+                <p>
+                    <input class="comment-admin" type="text" name="comm" id="comm-id" value="<?= $comment->comment ?>">
+                </p>
+                <input type="submit" value="Modifié/commentaire" name="modC">
+                <input type="submit" value="Supprimé/commentaire" name="modS">
+            </form>
+            <?php
+
+        }
+        ?>
+    </div>
 
 <?php
 //modif article

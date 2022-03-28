@@ -17,9 +17,13 @@ if (session_status() == PHP_SESSION_NONE)
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                        <!-- Css -->
     <link rel="stylesheet" href="/public/assets/css/bootstrap.css">
     <link rel="stylesheet" href="/public/assets/css/style.css">
-
+                     <!-- Font import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
                  <!-- Display the correct title -->
     <title>Blog<?php if (isset($_GET['id'])) echo '_Article ' .$_GET['id'] ?></title>
 
@@ -31,7 +35,7 @@ if (session_status() == PHP_SESSION_NONE)
             <h3 class="float-md-start mb-0">Mon blog</h3>
             <nav class="nav nav-masthead justify-content-center float-md-end">
                 <a class="nav-link active" aria-current="page" href="/index.php">Home</a>
-               <?php if ($_SESSION['role'] == 'admin')
+               <?php if (isset($_SESSION['role']) == 'admin')
                    { ?>
                        <a class="nav-link" href="/../../public/admin/admin.php">Articles</a>
                   <?php } else{ ?>
@@ -54,6 +58,7 @@ if (session_status() == PHP_SESSION_NONE)
             </nav>
         </div>
     </header>
+    <body>
             <!-- Clean $_SESSION -->
 <?php
     if (isset($_SESSION['flash']))
