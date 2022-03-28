@@ -50,14 +50,20 @@ if (isset($_SESSION['auth'])){
 
 ?>
     <h1>Connexion</h1>
-    <form class="form-connexion" action="" method="POST">
+    <form class="form-connexion" action="" method="POST" name="RegForm" onsubmit="return validateJs()">
 
         <!-- Simple form for connection -->
-        <label for="username-id" class="form-label">Votre pseudo <a href="../public/account/forget.php">(Mot de passe oublié ?)</a></label>
-        <p><input type="text" name="username" id="username-id"></p>
+        <label for="username-id" class="form-label">Votre pseudo
+            <a href="../public/account/forget.php">(Mot de passe oublié ?)</a>
+        </label>
+        <p>
+            <input type="text" name="username" id="username-id" required>
+        </p>
 
         <label for="pass-id">Votre Mot de passe</label>
-        <p><input type="password" name="password" id="pass-id"></p>
+        <p>
+            <input type="password" name="password" id="pass-id" required>
+        </p>
 
         <!-- CheckBox for remember of me -->
         <p>
@@ -66,5 +72,8 @@ if (isset($_SESSION['auth'])){
             </label>
         </p>
 
-        <p><input type="submit" value="connexion"></p>
+        <p>
+            <input type="submit" value="connexion">
+        </p>
     </form>
+<?php require_once (__DIR__ . '/../parts/footer.php'); ?>

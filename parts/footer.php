@@ -5,6 +5,7 @@
             </a>
         </p>
     </footer>
+    <script src="/../public/assets/js/app.js"></script>
 </body>
 
 </html>

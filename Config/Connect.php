@@ -15,7 +15,7 @@ class Connect
     public static function getPDO() :? PDO
     {
         try {
-            $bdd = new PDO("mysql:host=localhost;dbname=a_blog;charset=utf8", 'root', '');
+            $bdd = new PDO("mysql:host=localhost;dbname=u759056867_mon_blog;charset=utf8", 'u759056867_root', 'Catalan456852');
             $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
             $bdd->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
         }

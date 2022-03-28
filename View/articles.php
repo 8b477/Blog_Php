@@ -14,6 +14,8 @@ $articles = ArticleManager::getAllArticles();
             <time><?= $article->date_add ?></time>
             <!-- Display a link for more details on article id -->
             <p><a href="/View/article.php?id=<?= $article->id ?>">Lire la suite</a></p>
+
         <?php } ?>
 </div>
 
+<?php require_once (__DIR__ . '/../parts/footer.php'); ?>

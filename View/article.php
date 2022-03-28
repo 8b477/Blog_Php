@@ -86,5 +86,6 @@ $comments = CommentManager::getComments($id);
         }
         ?>
     </div>
+
 </body>
 </html>

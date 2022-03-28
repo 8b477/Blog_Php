@@ -1,7 +1,7 @@
 <?php
 
 require_once (__DIR__ . '/parts/header.php');
-require_once (__DIR__ . '/parts/footer.php');
+
 
 require_once (__DIR__ . '/Config/Connect.php');
 require_once (__DIR__ . '/Config/FunctionManager.php');

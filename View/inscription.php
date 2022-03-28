@@ -92,22 +92,30 @@ require_once(__DIR__ . '/../include.php');
         <!-- Simple form for inscription a new user -->
     <h1>Inscription</h1>
 
-    <form class="form-connexion"  action="" method="post">
+    <form class="form-connexion"  action="" method="post" name="RegForm" onsubmit="return validateJs()">
 
         <label for="username-id">Entrez un pseudo : </label>
-        <p><input type="text" name="username" id="username-id"></p>
+        <p>
+            <input type="text" name="username" id="username-id" minlength="4" required>
+        </p>
 
         <label for="mail-id">Entrez votre adresse mail : </label>
-        <p><input type="email" name="mail" id="mail-id"></p>
+        <p>
+            <input type="email" name="mail" id="mail-id" required>
+        </p>
 
         <label for="password-id">Entrez un mot de passe : </label>
-        <p><input type="password" name="password" id="password-id"></p>
+        <p>
+            <input type="password" name="password" id="password-id" required>
+        </p>
 
         <label for="pass-id-check">Confirmez le mot de passe : </label>
-        <p><input type="password" name="password-check" id="password-id-check"></p>
+        <p>
+            <input type="password" name="password-check" id="password-id-check" required>
+        </p>
 
         <p><input type="submit" value="inscription"></p>
 
     </form>
-
+<?php require_once (__DIR__ . '/../parts/footer.php'); ?>
 
