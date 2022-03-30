@@ -6,7 +6,8 @@ require_once(__DIR__ . '/../include.php');
 $articles = ArticleManager::getAllArticles();
 ?>
     <h1>Mes différents articles</h1>
-
+    <?php if (isset($_SESSION['auth'])){?>
+        <p class="text-center"><a href="/View/create-article.php">Crée ton article !</a></p> <?php }?>
 <div class="wrapper">
     <!-- Loop on all articles and displays them  -->
     <?php foreach($articles as $article) {?>
@@ -17,5 +18,3 @@ $articles = ArticleManager::getAllArticles();
 
         <?php } ?>
 </div>
-
-<?php require_once (__DIR__ . '/../parts/footer.php'); ?>

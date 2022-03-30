@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Config\Connect;
 use App\Manager\ArticleManager;
 use App\Manager\CommentManager;
 
@@ -22,12 +23,27 @@ else{
 $article = ArticleManager::getArticle($id);
 $comments = CommentManager::getComments($id);
 
-//secure data from form
+//secure data from form !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 if(!empty($_POST['author']) && !empty($_POST['comment']))
 {
-    $_POST['author'] = trim(addslashes(strip_tags($_POST['author'])));
-    $_POST['comment'] = trim(addslashes(strip_tags($_POST['comment'])));
+    $author = trim(addslashes(strip_tags($_POST['author'])));
+    $commentary = trim(addslashes(strip_tags($_POST['comment'])));
+
+    $pdo = Connect::getPDO();
+    $req = $pdo->prepare('SELECT * FROM users WHERE username = ?');
+    $req->execute([$author]);
+    $user = $req->fetch();
+
+    if ($user)
+    {
+        $articleId = $article->id;
+        $pdo = Connect::getPDO();
+        $req = $pdo->prepare("INSERT INTO comment SET articleId = ?, author = ?, comment = ?, date = CURRENT_DATE");
+        $req->execute([$articleId, $author, $commentary]);
+        header('Location: /View/articles.php');
+        $_SESSION['flash']['success'] = 'Commentaire ajouté !';
+    }
 }
 ?>
 

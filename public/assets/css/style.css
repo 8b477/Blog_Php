@@ -11,6 +11,7 @@ input, textarea{
 input{
     margin: 1rem;
 }
+
 textarea{
     padding: 1rem;
     border-radius: 5px;
@@ -27,7 +28,12 @@ header{
     text-align: center;
 }
 
-.footer{
+#footer{
+    position: relative;
+    text-align: center;
+}
+
+footer{
     position: absolute;
     bottom: 0;
     font-size: 1.5rem;
@@ -35,6 +41,7 @@ header{
     width: 100%;
     color: rgba(0, 102, 255, 0.87);
     height:50px;
+    line-height: 50px;
 }
 
 img{
@@ -141,4 +148,26 @@ h1, h2, h3{
 
 .background{
     border: #cae6fc solid 2px;
+}
+
+
+
+@media screen and (max-width: 550px) {
+
+    .underline{
+        text-decoration-line: underline;
+        font-size: 4.6rem;
+    }
+    .form-connexion{
+        width: 100%;
+    }
+    form{
+        width: 100%;
+    }
+    textarea{
+        width: 100%;
+    }
+    input{
+        width: 100%;
+    }
 }
